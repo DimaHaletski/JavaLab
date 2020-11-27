@@ -29,19 +29,42 @@ public class Runner {
             switch (userInput) {
                 case 1 -> {
                     valCurs = DomParser.parse(URL);
+                    System.out.println(valCurs.getDate());
+                    System.out.println(valCurs.getName());
 
+                    for (Valute valute : valCurs.getValutes()) {
+                        System.out.println(valute.getNumCode());
+                        System.out.println(valute.getCharCode());
+                        System.out.println(valute.getNominal());
+                        System.out.println(valute.getName());
+                        System.out.println(valute.getValue());
+                    }
                     break;
                 }
                 case 2 -> {
-                    SaxParser.parse();
+                    valCurs = SaxParser.parse();
+                    System.out.println(valCurs.getDate());
+                    System.out.println(valCurs.getName());
 
+                    for (Valute valute : valCurs.getValutes()) {
+                        System.out.println(valute.getNumCode());
+                        System.out.println(valute.getCharCode());
+                        System.out.println(valute.getNominal());
+                        System.out.println(valute.getName());
+                        System.out.println(valute.getValue());
+                    }
+                    break;
                 }
                 //case 3 ->
                 case 4 -> {
 
                     isTrue = false;
+                    break;
                 }
-                default -> System.out.println("Не правильный выбор!");
+                default -> {
+                    System.out.println("Не правильный выбор!");
+                    break;
+                }
             }
 
 
@@ -49,15 +72,3 @@ public class Runner {
     }
 }
 
-    public static void showResult(ValCurs) {
-        System.out.println(valCurs.getDate());
-        System.out.println(valCurs.getName());
-
-        for (Valute valute : valCurs.getValutes()) {
-            System.out.println(valute.getNumCode());
-            System.out.println(valute.getCharCode());
-            System.out.println(valute.getNominal());
-            System.out.println(valute.getName());
-            System.out.println(valute.getValue());
-        }
-    }

@@ -13,12 +13,14 @@ import java.util.ArrayList;
 
 public class SaxParser {
     private static ArrayList<Valute> valutes = new ArrayList<>();
+    private static ValCurs valCursObj;
 
-    public static void parse() throws ParserConfigurationException, SAXException, IOException {
+    public static ValCurs parse() throws ParserConfigurationException, SAXException, IOException {
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser parser = factory.newSAXParser();
         XMLHandler handler = new XMLHandler();
         parser.parse(new File("resourсes/cbr.xml"), handler);
+        return valCursObj;
 
     }
 
@@ -68,6 +70,15 @@ public class SaxParser {
                 nominal_s = null;
                 name_s = null;
                 value_s = null;
+            }
+            if (qName.equals("ValCurs")) {
+                if ((Date_s != null && !Date_s.isEmpty()) &&
+                        (name_s != null && !name_s.isEmpty())) {
+                    valCursObj = new ValCurs(Date_s, name_s, valutes_s);
+
+
+                }
+
             }
 
         }
