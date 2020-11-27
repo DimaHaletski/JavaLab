@@ -21,26 +21,23 @@ public class SaxParser {
         XMLHandler handler = new XMLHandler();
         parser.parse(new File("resourсes/cbr.xml"), handler);
         return valCursObj;
-
     }
 
     private static class XMLHandler extends DefaultHandler {
         private String lastElementName;
-        private static ArrayList<Valute> valutes_s = new ArrayList<>();
+        private static final ArrayList<Valute> valutes_s = new ArrayList<>();
         private String Date_s;
         private String Name_s;
-        private String valuteId_s;
         private String numCode_s;
         private String charCode_s;
         private String nominal_s;
         private String name_s;
         private String value_s;
-
+        private ValCurs valCurs_s;
 
         @Override
-        public void endDocument() throws SAXException {
-            valutes = valutes_s;
-            valutes_s = new ArrayList<>();
+        public void endDocument(){
+            valCursObj = valCurs_s;
         }
 
         @Override
@@ -50,11 +47,7 @@ public class SaxParser {
                 Date_s = attributes.getValue("Date");
                 Name_s = attributes.getValue("name");
             }
-            if (qName.equals("Valute")) {
-                valuteId_s = attributes.getValue("ID");
-            }
         }
-
         @Override
         public void endElement(String uri, String localName, String qName) throws SAXException {
             if (qName.equals("Valute")) {
@@ -73,16 +66,11 @@ public class SaxParser {
             }
             if (qName.equals("ValCurs")) {
                 if ((Date_s != null && !Date_s.isEmpty()) &&
-                        (name_s != null && !name_s.isEmpty())) {
-                    valCursObj = new ValCurs(Date_s, name_s, valutes_s);
-
-
+                        (Name_s != null && !Name_s.isEmpty())) {
+                    valCurs_s = new ValCurs(Date_s, Name_s, valutes_s);
                 }
-
             }
-
         }
-
         @Override
         public void characters(char[] ch, int start, int length) throws SAXException {
             String information = new String(ch, start, length);
@@ -98,16 +86,13 @@ public class SaxParser {
                     nominal_s = information;
                 }
                 if (lastElementName.equals("Name")) {
-                    Name_s = information;
+                    name_s = information;
                 }
                 if (lastElementName.equals("Value")) {
                     value_s = information;
                 }
             }
-
         }
-
-
     }
 }
 
