@@ -1,19 +1,17 @@
 package by.gsu.lab8;
 
-import by.gsu.pms.DomParser;
-import by.gsu.pms.SaxParser;
-import by.gsu.pms.ValCurs;
-import by.gsu.pms.Valute;
+import by.gsu.pms.*;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
 import java.util.Scanner;
 
 public class Runner {
     public static final String URL = "http://www.cbr.ru/scripts/XML_daily.asp";
 
-    public static void main(String[] args) throws IOException, SAXException, ParserConfigurationException {
+    public static void main(String[] args) throws IOException, SAXException, ParserConfigurationException, XMLStreamException {
         Scanner scanner = new Scanner(System.in);
         int userInput;
         boolean isTrue = true;
@@ -36,6 +34,8 @@ public class Runner {
                     showResult(valCurs);
                     break;
                 case 3:
+                    valCurs = StAXParser.parse();
+                    showResult(valCurs);
                     System.out.println("\n");
                     break;
                 case 4:
