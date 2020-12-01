@@ -1,0 +1,38 @@
+<ValCurs Date="26.11.2020" name="Foreign Currency Market">
+    <Valute ID="R01035">
+        <NumCode>826</NumCode>
+        <CharCode>GBP</CharCode>
+        <Nominal>1</Nominal>
+        <Name>Фунт стерлингов Соединенного королевства</Name>
+        <Value>100,8315</Value>
+    </Valute>
+    <Valute ID="R01090B">
+        <NumCode>933</NumCode>
+        <CharCode>BYN</CharCode>
+        <Nominal>1</Nominal>
+        <Name>Белорусский рубль</Name>
+        <Value>29,4585</Value>
+    </Valute>
+    <Valute ID="R01235">
+        <NumCode>840</NumCode>
+        <CharCode>USD</CharCode>
+        <Nominal>1</Nominal>
+        <Name>Доллар США</Name>
+        <Value>75,4727</Value>
+    </Valute>
+    <Valute ID="R01239">
+        <NumCode>978</NumCode>
+        <CharCode>EUR</CharCode>
+        <Nominal>1</Nominal>
+        <Name>Евро</Name>
+        <Value>89,8880</Value>
+    </Valute>
+    <Valute ID="R01820">
+        <NumCode>392</NumCode>
+        <CharCode>JPY</CharCode>
+        <Nominal>100</Nominal>
+        <Name>Японских иен</Name>
+        <Value>72,2815</Value>
+    </Valute>
+</ValCurs>
+
